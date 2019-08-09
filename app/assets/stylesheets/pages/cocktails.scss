@@ -1,7 +1,31 @@
-// .cocktail-list {
-//   text-decoration: none;
-// }
-
 .cocktail-list {
   list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.banner {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 150px;
+  color: white;
+  min-height: 900px;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+.title {
+  text-align: center;
+  font-size: 70px;
+}
+
+.card {
+  font-size: 50px;
+}
+
+body {
+  background-color: #A9A9A9;
 }
