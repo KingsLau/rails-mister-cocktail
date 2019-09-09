@@ -1,10 +1,19 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1)), url(https://img.maximummedia.ie/joe_ie/eyJkYXRhIjoie1widXJsXCI6XCJodHRwOlxcXC9cXFwvbWVkaWEtam9lLm1heGltdW1tZWRpYS5pZS5zMy5hbWF6b25hd3MuY29tXFxcL3dwLWNvbnRlbnRcXFwvdXBsb2Fkc1xcXC8yMDE1XFxcLzEyXFxcLzI4MTQ1MTMyXFxcL0RyaW5rLmpwZ1wiLFwid2lkdGhcIjo2NDAsXCJoZWlnaHRcIjozNjAsXCJkZWZhdWx0XCI6XCJodHRwczpcXFwvXFxcL3d3dy5qb2UuaWVcXFwvYXNzZXRzXFxcL2ltYWdlc1xcXC9qb2VcXFwvbm8taW1hZ2UucG5nP2lkPTQzYmNhOWRlN2ViMjY5NzM3YTBmXCIsXCJvcHRpb25zXCI6W119IiwiaGFzaCI6IjNkODgyOWY3ODBhMmY3MTFlYzY3YjBkZGM5ODljMGM2YWNjMzc4NmQifQ==/drink.jpg)">
-  <h1 class="title">Cocktail Heaven</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1)), url(<%= image_path 'banner.jpeg' %>);">
+  <div class="abc">
+    <h1 class="title">Cocktail Heaven</h1>
+  </div>
+  <div class="abc">
+    <%= link_to "Create a drink", new_cocktail_path, class: "btn" %>
+  </div>
 </div>
 <div class="container">
     <ul class="cocktail-list">
     <% @cocktails.each do |cocktail| %>
-      <li class="card col-12"> <%= (cl_image_tag cocktail.photo, height: 300, width: 400, crop: :fill) %> <%= link_to cocktail.name, cocktail_path(cocktail) %> </li>
+      <%= link_to cocktail_path(cocktail) do %>
+        <li class="card"> <%= (cl_image_tag cocktail.photo, height: 300, width: 400, crop: :fill) %> <p><%= cocktail.name %></p></li>
+      <% end %>
     <% end %>
     </ul>
 </div>
+
+<%#= link_to cocktail.name, cocktail_path(cocktail) %>
