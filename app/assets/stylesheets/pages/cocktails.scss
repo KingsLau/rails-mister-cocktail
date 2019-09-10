@@ -5,7 +5,9 @@ body {
   color: white;
   text-shadow: 2px 2px black;
 }
-
+a {
+  color: white;
+}
 a:hover {
   text-decoration: none;
 }
@@ -73,7 +75,7 @@ a:hover {
   // max-width: 50%;
   p {
     position: relative;
-    bottom: 60%;
+    bottom: 50%;
     z-index: 99;
     color: white;
   }
@@ -89,4 +91,12 @@ a:hover {
 
 label {
   font-size: 32px;
+}
+
+i {
+  font-size: 16px;
+}
+
+.btn {
+  color: white;
 }

@@ -9,11 +9,67 @@
 <div class="container">
     <ul class="cocktail-list">
     <% @cocktails.each do |cocktail| %>
-      <%= link_to cocktail_path(cocktail) do %>
-        <li class="card"> <%= (cl_image_tag cocktail.photo, height: 300, width: 400, crop: :fill) %> <p><%= cocktail.name %></p></li>
-      <% end %>
+        <li class="card">
+          <a href="#" data-toggle="modal" data-target="#modal-<%= cocktail.id %>">
+            <%= (cl_image_tag cocktail.photo, height: 300, width: 400, crop: :fill) %>
+            <p> <%= cocktail.name %> </p>
+          </a>
+          <div id="modal-<%= cocktail.id %>" class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content">
+                <div class="cocktail-container">
+                  <div>
+                    <%= cl_image_tag cocktail.photo, height: 300, width: 400, crop: :fill %>
+                  </div>
+                  <h3>
+                    <%= cocktail.name %>
+                  </h3>
+                  <h5>Ingredients List:</h5>
+                  <ul class="doses-list">
+                    <% cocktail.doses.each do |dose| %>
+                      <li> <%= dose.description %> -- <%= dose.ingredient.name %> <%= link_to dose_path(dose), method: :delete, data:{confirm: "Are you sure you want to delete this ingredient?"} do %>
+                      <i class='far fa-trash-alt'></i>
+                      </li>
+                    <% end %>
+                  <% end %>
+                  </ul>
+                  <!-- <p> -->
+                  <div class="modal-buttons">
+                    <div class="add-ingredient">
+                      <%= link_to "Add an Ingredient", new_cocktail_dose_path(cocktail), class: "btn btn-primary" %>
+                    </div>
+                    <div class="delete-cocktail">
+                      <%= link_to "Delete this cocktail?", cocktail_path(cocktail), method: :delete, data:{confirm: "Are you sure you want to delete this cocktail?"}, class: "btn btn-primary" %>
+                        <!-- <p class="btn btn-primary">Delete this cocktail?</p> -->
+                      <%# end %>
+                    </div>
+                  </div>
+                  <!-- </p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
     <% end %>
     </ul>
 </div>
 
-<%#= link_to cocktail.name, cocktail_path(cocktail) %>
+          <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-<%#= cocktail.id %>">Extra large modal</button> -->
+
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large modal</button>
+
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div> -->
+
+<!-- <ul class="cocktail-list">
+    <%# @cocktails.each do |cocktail| %>
+      <%#= link_to cocktail_path(cocktail) do %>
+        <li class="card"> <%#= (cl_image_tag cocktail.photo, height: 300, width: 400, crop: :fill) %> <p><%#= cocktail.name %></p></li>
+      <%# end %>
+    <%# end %>
+    </ul> -->
