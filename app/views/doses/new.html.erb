@@ -1,5 +1,7 @@
-<%= simple_form_for [@cocktail, @dose] do |f| %>
-  <%= f.input :description %>
-  <%= f.association :ingredient, collection: Ingredient.where.not(id: @cocktail.ingredients) %>
-  <%= f.submit "Add a dose", class: "btn btn-primary" %>
-<% end %>
+<div class="container-new">
+  <%= simple_form_for [@cocktail, @dose] do |f| %>
+    <%= f.input :description, label: "How much of the ingredient should be added?" %>
+    <%= f.association :ingredient, label: "Choose an ingredient from the list", collection: Ingredient.where.not(id: @cocktail.ingredients) %>
+    <%= f.submit "Add a dose", class: "btn btn-primary" %>
+  <% end %>
+</div>
