@@ -17,6 +17,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+    a {
+    background-color: gray;
+    border: none;
+    a:hover {
+      background-color: #0E77F3;
+    }
+  }
 }
 // .container {
 //   display: flex;
