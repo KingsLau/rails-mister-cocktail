@@ -14,6 +14,7 @@
             <%= (cl_image_tag cocktail.photo, height: 300, width: 400, crop: :fill) %>
             <p> <%= cocktail.name %> </p>
           </a>
+          <!-- MODAL -->
           <div id="modal-<%= cocktail.id %>" class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
               <div class="modal-content">
@@ -35,18 +36,14 @@
                       </li>
                   <% end %>
                   </ul>
-                  <!-- <p> -->
                   <div class="modal-buttons">
                     <div class="add-ingredient">
                       <%= link_to "Add an Ingredient", new_cocktail_dose_path(cocktail), class: "btn btn-primary" %>
                     </div>
                     <div class="delete-cocktail">
                       <%= link_to "Delete this cocktail?", cocktail_path(cocktail), method: :delete, data:{confirm: "Are you sure you want to delete this cocktail?"}, class: "btn btn-primary" %>
-                        <!-- <p class="btn btn-primary">Delete this cocktail?</p> -->
-                      <%# end %>
                     </div>
                   </div>
-                  <!-- </p> -->
                 </div>
               </div>
             </div>

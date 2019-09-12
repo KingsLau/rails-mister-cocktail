@@ -1,24 +1,3 @@
-# README
+This project is my first Ruby on Rails application that allows for anyone to create a cocktail with an image, specify an amount of a certain ingredient to be added to the cocktail recipe, and delete any of the created content.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+It utilizies Carrierwave and Cloudinary for the uploading and storage of images.
