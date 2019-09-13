@@ -1,8 +1,11 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1)), url(<%= image_path 'banner.jpeg' %>);">
-  <div class="abc">
+  <div class="landing-header">
     <h1 class="title">Cocktail Heaven</h1>
   </div>
-  <div class="abc">
+  <div class="landing-content">
+    <p>Welcome to Cocktail Heaven. Make a drink or add ingredients to a drink.</p>
+  </div>
+  <div class="buttons">
     <%= link_to "Create a drink", new_cocktail_path, class: "btn" %>
   </div>
 </div>
@@ -22,17 +25,22 @@
                   <div>
                     <%= cl_image_tag cocktail.photo, height: 300, width: 400, crop: :fill %>
                   </div>
-                  <h3>
+                  <h2>
                     <%= cocktail.name %>
-                  </h3>
-                  <h5>Ingredient List:</h5>
+                  </h2>
                   <ul class="doses-list">
+                    <% if cocktail.doses.empty? %>
+                      <h4>No recipe yet!</h4>
+                    <% else %>
+                      <h4>Recipe:</h4>
+                    <% end %>
                     <% cocktail.doses.each do |dose| %>
                       <li>
                         <%= link_to dose_path(dose), method: :delete, data:{confirm: "Are you sure you want to delete this ingredient?"} do %>
-                          <i class='far fa-trash-alt'></i>
+                          <i class="fas fa-times-circle"></i>
+                          <!-- <i class='far fa-trash-alt'></i> -->
                         <% end %>
-                        <%= dose.description %> -- <%= dose.ingredient.name %>
+                          <%= dose.description %> -- <%= dose.ingredient.name %>
                       </li>
                   <% end %>
                   </ul>
